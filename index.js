@@ -6,11 +6,18 @@ module.exports = function (opts) {
 
     var exotel = {};
 
-    exotel.sendSMS = function (to, msg, statusCb, cb) {
+    exotel.sendSMS = function (to, msg, priority, statusCb, cb) {
         if (arguments.length === 3) {
             cb = arguments[2];
+            priority = 'normal';
             statusCb = '';
         }
+         
+        if (arguments.length === 4) {
+            cb = arguments[3];
+            statusCb = '';
+         }
+ 
 
         var data = {
             'From': '9999999999', // value doesn't matter
